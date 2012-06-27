@@ -4,7 +4,7 @@
 NAME=jenkins
 
 # location of java
-JAVA=/usr/bin/java
+JAVA=<%= node.java.java_home %>/bin/java
 
 # arguments to pass to java
 #JAVA_ARGS="-Xmx256m"
@@ -46,10 +46,11 @@ AJP_PORT=-1
 
 # arguments to pass to jenkins.
 # --javahome=$JAVA_HOME
+# --httpListenAddress=$HTTP_HOST
 # --httpPort=$HTTP_PORT (default 8080; disable with -1)
 # --httpsPort=$HTTP_PORT
 # --ajp13Port=$AJP_PORT
 # --argumentsRealm.passwd.$ADMIN_USER=[password]
 # --argumentsRealm.$ADMIN_USER=admin
 # --webroot=~/.jenkins/war
-JENKINS_ARGS="--webroot=/var/run/jenkins/war --httpListenAddress=$HTTP_HOST --httpPort=$HTTP_PORT --ajp13Port=$AJP_PORT"
+JENKINS_ARGS="--webroot=/var/run/jenkins/war --httpPort=$HTTP_PORT --ajp13Port=$AJP_PORT"

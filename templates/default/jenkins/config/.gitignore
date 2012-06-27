@@ -1,0 +1,6 @@
+hudson.maven.MavenModuleSet.xml
+hudson.scm.CVSSCM.xml
+hudson.scm.SubversionSCM.xml
+hudson.tasks.Ant.xml
+hudson.tasks.Shell.xml
+hudson.triggers.SCMTrigger.xml

@@ -19,7 +19,10 @@
 # limitations under the License.
 #
 
-include_recipe "nginx::source"
+service 'nginx' do
+  supports [:status, :restart, :reload]
+  action :nothing
+end
 
 if node[:jenkins][:http_proxy][:www_redirect] == "enable"
   www_redirect = true
@@ -47,10 +50,7 @@ template "#{node[:nginx][:dir]}/sites-available/jenkins.conf" do
   end
 end
 
-nginx_site "jenkins.conf" do
-  if node[:jenkins][:http_proxy][:variant] == "nginx"
-    enable true
-  else
-    enable false
-  end
+link "#{node['nginx']['dir']}/sites-enabled/jenkins}" do
+  to "#{node[:nginx][:dir]}/sites-available/jenkins.conf"
+  notifies :restart, resources(:service => "nginx")
 end

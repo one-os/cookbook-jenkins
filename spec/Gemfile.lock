@@ -1,0 +1,14 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    bcrypt-ruby (3.0.1-java)
+    minitest (2.12.1)
+    minitest-colorize (0.0.4)
+      minitest (~> 2.0)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  bcrypt-ruby (~> 3.0.1)
+  minitest-colorize

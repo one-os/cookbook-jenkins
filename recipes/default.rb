@@ -42,7 +42,7 @@ end
 
 %w{ /var/cache/jenkins /var/log/jenkins /var/run/jenkins }.each do |dir|
   directory dir do
-    owner "root"
+    owner node[:jenkins][:server][:user]
     group "root"
   end
 end

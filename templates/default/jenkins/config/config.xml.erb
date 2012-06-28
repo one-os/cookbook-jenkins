@@ -26,6 +26,11 @@
     <clientID>ecba1987496fd4874e5b</clientID>
     <clientSecret>514b3949ff88f4fcfd9bb80af6fe716330b461bd</clientSecret>
   </securityRealm>
+<% elsif @authorization_strategy == 'project_matrix' %>
+  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+    <disableSignup>true</disableSignup>
+    <enableCaptcha>false</enableCaptcha>
+  </securityRealm>
 <% else %>
   <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
   <securityRealm class="hudson.security.SecurityRealm$None"/>

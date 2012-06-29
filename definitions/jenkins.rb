@@ -49,7 +49,7 @@ define :setup_ssh do
     group node[:jenkins][:server][:group]
     mode "0600"
     content node[:jenkins][:server][:private_key]
-    not_if { File.exists?("#{node['gitlab']['home']}/.ssh/id_rsa") }
+    not_if { File.exists?("#{node[:jenkins][:server][:home]}/.ssh/id_rsa") }
   end
 
   file "#{node[:jenkins][:server][:home]}/.ssh/id_rsa.pub" do
@@ -57,7 +57,7 @@ define :setup_ssh do
     group node[:jenkins][:server][:group]
     mode "0600"
     content node[:jenkins][:server][:public_key]
-    not_if { File.exists?("#{node['gitlab']['home']}/.ssh/id_rsa.pub") }
+    not_if { File.exists?("#{node[:jenkins][:server][:home]}/.ssh/id_rsa.pub") }
   end
 
 end

@@ -22,6 +22,9 @@
 actions :create
 
 attribute :user_name, :kind_of => String, :name_attribute => true
+attribute :full_name, :kind_of => String
+attribute :password,  :kind_of => String
+attribute :email,     :kind_of => String
 
 def initialize(name, run_context=nil)
   super

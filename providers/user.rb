@@ -19,6 +19,10 @@
 # limitations under the License.
 #
 
+def bcrypt(secret)
+  secret
+end
+
 def action_create
   directory "#{node[:jenkins][:server][:home]}/users" do
     owner node[:jenkins][:server][:user]
@@ -26,17 +30,22 @@ def action_create
     mode 0755
   end
 
-  directory "#{node[:jenkins][:server][:home]}/users/a.simon@one-os.de" do
+  directory "#{node[:jenkins][:server][:home]}/users/#{new_resource.name}" do
     owner node[:jenkins][:server][:user]
     group node[:jenkins][:server][:user]
     mode 0755
   end
 
-  template "#{node[:jenkins][:server][:home]}/users/a.simon@one-os.de/config.xml" do
+  template "#{node[:jenkins][:server][:home]}/users/#{new_resource.name}/config.xml" do
     cookbook 'jenkins'
     source "jenkins/config/user/config.xml.erb"
     owner node[:jenkins][:server][:user]
     group node[:jenkins][:server][:user]
     mode 0644
+    variables(
+      full_name: new_resource.full_name,
+      password_hash: bcrypt(new_resource.password),
+      email: new_resource.email
+    )
   end
 end

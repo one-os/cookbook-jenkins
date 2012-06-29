@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <user>
-  <fullName>Andreas</fullName>
+  <fullName><%= @full_name %></fullName>
   <properties>
     <jenkins.security.ApiTokenProperty>
       <apiToken>mMCMBo2f9ybM057uqWzMLX1WHbNpSIfQTu6cilTTw0wurAeAp8jmemMx4vX8MA0n</apiToken>
@@ -20,10 +20,10 @@
       <insensitiveSearch>false</insensitiveSearch>
     </hudson.search.UserSearchProperty>
     <hudson.security.HudsonPrivateSecurityRealm_-Details>
-      <passwordHash>#jbcrypt:$2a$10$k5a0Fjgnp0M0R.L8djd6Cuv9JQ95hZHIUNbYhIFvr3mkMzEFDL0iq</passwordHash>
+      <passwordHash>#jbcrypt:<%= @password_hash %></passwordHash>
     </hudson.security.HudsonPrivateSecurityRealm_-Details>
     <hudson.tasks.Mailer_-UserProperty>
-      <emailAddress>a.simon@one-os.de</emailAddress>
+      <emailAddress><%= @email %></emailAddress>
     </hudson.tasks.Mailer_-UserProperty>
   </properties>
 </user>

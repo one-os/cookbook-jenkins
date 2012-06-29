@@ -19,8 +19,9 @@
 # limitations under the License.
 #
 
-def bcrypt(secret)
-  secret
+def jbcrypt(secret)
+  jbcrypt_lib_path = ::File.expand_path("../../files/default/jbcrypt-0.3.1.jar", __FILE__)
+  `#{node[:java][:java_home]}/bin/java -jar #{jbcrypt_lib_path} #{secret}`.delete("\n")
 end
 
 def action_create
@@ -44,7 +45,7 @@ def action_create
     mode 0644
     variables(
       full_name: new_resource.full_name,
-      password_hash: bcrypt(new_resource.password),
+      password_hash: jbcrypt(new_resource.password),
       email: new_resource.email
     )
   end
